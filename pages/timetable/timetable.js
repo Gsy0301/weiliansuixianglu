@@ -1,10 +1,10 @@
 const WEEKDAY_NAMES = ['周一','周二','周三','周四','周五','周六','周日']
 const DAY_PERIODS = [
-  { key: 'am12', short: '一二节' },
-  { key: 'am34', short: '三四节' },
-  { key: 'pm56', short: '五六节' },
-  { key: 'pm78', short: '七八节' },
-  { key: 'ev910', short: '九十节' },
+  { key: 'p1', short: '一' },
+  { key: 'p2', short: '二' },
+  { key: 'p3', short: '三' },
+  { key: 'p4', short: '四' },
+  { key: 'p5', short: '五' },
 ]
 
 // 以 2025-09-01 为第一周（周数计算从1开始）
