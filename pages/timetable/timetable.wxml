@@ -10,11 +10,11 @@
       <text class="th" wx:for="{{weekdays}}" wx:key="*this">{{item}}</text>
     </view>
     <view class="tbody">
-      <view class="row" wx:for="{{dayPeriods}}" wx:key="short">
+      <view class="row" wx:for="{{dayPeriods}}" wx:key="short" wx:for-index="rowIndex">
         <text class="td period">{{item.short}}</text>
-        <view class="td cell" wx:for="{{weekdays}}" wx:key="*this" data-row="{{index}}" data-col="{{item}}" bindtap="openCell">
+        <view class="td cell" wx:for="{{weekdays}}" wx:key="*this" wx:for-index="colIndex" data-row="{{rowIndex}}" data-col="{{item}}" bindtap="openCell">
           <view class="cell-inner">
-            <text class="course">{{courses[index][item] || ''}}</text>
+            <text class="course">{{courses[rowIndex][item] || ''}}</text>
           </view>
         </view>
       </view>
