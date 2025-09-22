@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="header">
+    <text class="title">美食骰子</text>
+    <text class="subtitle">不知道吃什么？掷一次就知道</text>
+  </view>
+
+  <view class="dice-card">
+    <view class="dish-display {{rolling ? 'rolling' : ''}}">
+      <text class="dish-name">{{currentDish}}</text>
+    </view>
+    <view class="actions">
+      <button class="btn primary" loading="{{false}}" bindtap="roll">{{rolling ? '停止' : '开始'}}</button>
+    </view>
+  </view>
+
+  <view class="grid-list">
+    <view class="grid-item" wx:for="{{pool}}" wx:key="name">
+      <text class="emoji">{{item.emoji}}</text>
+      <text class="name">{{item.name}}</text>
+    </view>
+  </view>
+</view>
+

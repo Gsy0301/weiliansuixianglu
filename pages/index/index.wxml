@@ -1,4 +1,16 @@
 <!--index.wxml-->
-<view class="container">
-  <text>hello</text>
-</view>
+<scroll-view class="scrollarea" scroll-y>
+  <view class="container">
+    <view class="welcome">
+      <text class="welcome-title">功能小站</text>
+      <text class="welcome-sub">精选小工具，持续上新</text>
+    </view>
+
+    <view class="feature-grid">
+      <view class="feature-item card" bindtap="goToFoodDice">
+        <view class="feature-icon">🍱</view>
+        <text class="feature-text">美食骰子</text>
+      </view>
+    </view>
+  </view>
+</scroll-view>
