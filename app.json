@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/food-dice/food-dice"
+    "pages/food-dice/food-dice",
+    "pages/timetable/timetable"
   ],
   "window": {
     "navigationBarTextStyle": "black",

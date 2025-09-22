@@ -11,6 +11,10 @@
         <view class="feature-icon">🍱</view>
         <text class="feature-text">美食骰子</text>
       </view>
+      <view class="feature-item card" bindtap="goToTimetable">
+        <view class="feature-icon">📚</view>
+        <text class="feature-text">课程表</text>
+      </view>
     </view>
   </view>
 </scroll-view>

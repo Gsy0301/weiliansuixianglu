@@ -1,0 +1,32 @@
+<view class="page">
+  <view class="header">
+    <text class="date">{{currentDate}}</text>
+    <text class="week">第{{weekNumber}}周</text>
+  </view>
+
+  <view class="table">
+    <view class="thead">
+      <text class="th corner"></text>
+      <text class="th" wx:for="{{weekdays}}" wx:key="*this">{{item}}</text>
+    </view>
+    <view class="tbody">
+      <view class="row" wx:for="{{dayPeriods}}" wx:key="short">
+        <text class="td period">{{item.short}}</text>
+        <view class="td cell" wx:for="{{weekdays}}" wx:key="*this" data-row="{{index}}" data-col="{{item}}" bindtap="openCell">
+          <view class="cell-inner">
+            <text class="course">{{courses[index][item] || ''}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{modal.visible}}" class="modal-mask" bindtap="closeModal">
+    <view class="modal" catchtap="noop">
+      <text class="modal-title">{{modal.title}}</text>
+      <text class="modal-content">{{modal.content || '暂无课程信息'}}</text>
+      <button class="btn" bindtap="closeModal">关闭</button>
+    </view>
+  </view>
+</view>
+
