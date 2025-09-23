@@ -29,12 +29,16 @@
 }
 
 .coin-area {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 30px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.coin-area.raised {
+  margin-top: -10px; /* 上移一点 */
 }
 
 .coins-container {
@@ -96,7 +100,7 @@
 .control-area {
   display: flex;
   gap: 25px;
-  margin-bottom: 50px;
+  margin: 20px 0 40px 0;
 }
 
 .throw-btn, .stop-btn {
@@ -146,5 +150,125 @@
 .stop-btn.active {
   background: linear-gradient(145deg, #f44336, #da190b);
   color: white;
+}
+
+.copy-btn {
+  padding: 18px 24px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background: linear-gradient(145deg, #2196F3, #1976D2);
+  color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.tips {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.panel-area {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.panel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  padding: 12px;
+  color: #fff;
+}
+
+.panel-title {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* 仅将“本卦”“变卦”的标题文字居中 */
+.primary-panel .panel-title,
+.changed-panel .panel-title {
+  text-align: center;
+}
+
+.record-lines {
+  display: flex;
+  flex-direction: column-reverse; /* 从下往上排列 */
+  gap: 1px; /* 与本卦一致 */
+}
+
+.record-line {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.record-glyph {
+  font-size: 22px;
+  display: inline-block;
+  transform: scaleX(2);
+  transform-origin: left center; /* 以左边为基点放大，避免左侧错位 */
+  margin-right: 8px;
+  line-height: 1.1; /* 与本卦一致 */
+}
+
+.change-mark {
+  font-size: 18px;
+  margin-left: 4px;
+}
+
+.line-desc {
+  opacity: 0.85;
+}
+
+.hexagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.hex-lines {
+  display: flex;
+  flex-direction: column-reverse; /* 显示为自下而上 */
+  gap: 1px;
+}
+
+.hex-line {
+  font-size: 22px; /* 放大一点以呈现三倍符号 */
+  letter-spacing: 2px;
+  display: inline-block;
+  transform: scaleX(2);
+  transform-origin: center;
+  line-height: 1.1;
+}
+
+.hex-line.yang {
+  color: #ffffff;
+}
+
+.hex-line.yin {
+  color: #000000;
+}
+
+.hex-name {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hex-name-line {
+  line-height: 1.4;
+}
+
+.placeholder {
+  opacity: 0.8;
 }
 

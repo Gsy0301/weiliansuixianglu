@@ -5,7 +5,7 @@
     <text class="subtitle">投掷三枚古币，占卜吉凶</text>
   </view>
 
-  <view class="coin-area">
+<view class="coin-area raised">
     <view class="coins-container">
       <view class="coin {{isThrowing ? 'throwing' : ''}} {{item}}" wx:for="{{coins}}" wx:key="index">
         <text class="coin-text">{{item === 'yang' ? '阳' : item === 'yin' ? '阴' : item}}</text>
@@ -13,12 +13,60 @@
     </view>
   </view>
 
+  <view class="tips">
+    <text>已投掷 {{throwCount}} 次 / 共 {{maxThrows}} 次</text>
+    <text wx:if="{{throwCount < maxThrows}}">（可再投 {{maxThrows - throwCount}} 次）</text>
+  </view>
+
+  <view class="panel-area" wx:if="{{throwCount > 0}}">
+    <view class="panel record-panel">
+      <text class="panel-title">记录区</text>
+        <view class="record-lines">
+          <view class="record-line" wx:for="{{lines}}" wx:key="index">
+            <text class="record-glyph">{{item.isYang ? '⚊' : '⚋'}}</text>
+            <text class="change-mark" wx:if="{{item.sum === 9}}">○</text>
+            <text class="change-mark" wx:if="{{item.sum === 6}}">×</text>
+          </view>
+        </view>
+    </view>
+
+    <view class="panel primary-panel">
+      <text class="panel-title">本卦</text>
+      <view wx:if="{{primaryHexagram}}" class="hexagram">
+        <view class="hex-lines">
+          <block wx:for="{{lines}}" wx:key="idx">
+            <text class="hex-line {{item.isYang ? 'yang' : 'yin'}}">{{item.isYang ? '⚊' : '⚋'}}</text>
+          </block>
+        </view>
+        <view class="hex-name">
+          <text class="hex-name-line">{{primaryHexagram.upperName}}{{primaryHexagram.lowerName}}</text>
+          <text class="hex-name-line">{{primaryHexagram.name}}</text>
+        </view>
+      </view>
+      <text wx:else class="placeholder">待完成六次投掷</text>
+    </view>
+
+    <view class="panel changed-panel">
+      <text class="panel-title">变卦</text>
+      <view wx:if="{{changedHexagram}}" class="hexagram">
+        <view class="hex-lines">
+          <block wx:for="{{changedHexagram.lines}}" wx:key="idx2">
+            <text class="hex-line {{item ? 'yang' : 'yin'}}">{{item ? '⚊' : '⚋'}}</text>
+          </block>
+        </view>
+        <view class="hex-name">
+          <text class="hex-name-line">{{changedHexagram.upperName}}{{changedHexagram.lowerName}}</text>
+          <text class="hex-name-line">{{changedHexagram.name}}</text>
+        </view>
+      </view>
+      <text wx:else class="placeholder">无变卦或待完成</text>
+    </view>
+  </view>
+
   <view class="control-area">
-    <button class="throw-btn {{isThrowing ? 'throwing' : ''}}" bindtap="toggleThrowing" disabled="{{isThrowing}}">
-      {{isThrowing ? '投掷中...' : '开始投掷'}}
+    <button class="throw-btn {{isThrowing ? 'throwing' : ''}}" bindtap="toggleThrowing">
+      {{isThrowing ? '停止投掷' : (hasThrown ? '再次投掷' : '开始投掷')}}
     </button>
-    <button class="stop-btn {{!isThrowing && hasThrown ? 'active' : ''}}" bindtap="stopThrowing" disabled="{{!isThrowing}}">
-      停止投掷
-    </button>
+    <button wx:if="{{throwCount >= maxThrows}}" class="copy-btn" bindtap="copyHexagram">复制卦象</button>
   </view>
 </view>
