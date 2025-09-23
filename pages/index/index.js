@@ -7,4 +7,7 @@ Page({
   goToTimetable() {
     wx.navigateTo({ url: '/pages/timetable/timetable' })
   },
+  goToCoinDivination() {
+    wx.navigateTo({ url: '/pages/coin-divination/coin-divination' })
+  },
 })

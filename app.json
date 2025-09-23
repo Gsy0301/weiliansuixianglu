@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/food-dice/food-dice",
-    "pages/timetable/timetable"
+    "pages/timetable/timetable",
+    "pages/coin-divination/coin-divination"
   ],
   "window": {
     "navigationBarTextStyle": "black",

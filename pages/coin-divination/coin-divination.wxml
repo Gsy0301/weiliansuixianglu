@@ -1,0 +1,24 @@
+<!--coin-divination.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">金钱卦</text>
+    <text class="subtitle">投掷三枚古币，占卜吉凶</text>
+  </view>
+
+  <view class="coin-area">
+    <view class="coins-container">
+      <view class="coin {{isThrowing ? 'throwing' : ''}} {{item}}" wx:for="{{coins}}" wx:key="index">
+        <text class="coin-text">{{item === 'yang' ? '阳' : item === 'yin' ? '阴' : item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="control-area">
+    <button class="throw-btn {{isThrowing ? 'throwing' : ''}}" bindtap="toggleThrowing" disabled="{{isThrowing}}">
+      {{isThrowing ? '投掷中...' : '开始投掷'}}
+    </button>
+    <button class="stop-btn {{!isThrowing && hasThrown ? 'active' : ''}}" bindtap="stopThrowing" disabled="{{!isThrowing}}">
+      停止投掷
+    </button>
+  </view>
+</view>

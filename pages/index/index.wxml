@@ -10,6 +10,10 @@
         <view class="feature-icon">📚</view>
         <text class="feature-text">课程表</text>
       </view>
+      <view class="feature-item card" bindtap="goToCoinDivination">
+        <view class="feature-icon">🪙</view>
+        <text class="feature-text">金钱卦</text>
+      </view>
     </view>
 
     <view class="footer">
