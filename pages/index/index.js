@@ -10,4 +10,7 @@ Page({
   goToCoinDivination() {
     wx.navigateTo({ url: '/pages/coin-divination/coin-divination' })
   },
+  goToQingjing() {
+    wx.navigateTo({ url: '/pages/qingjing/qingjing' })
+  },
 })

@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/food-dice/food-dice",
     "pages/timetable/timetable",
-    "pages/coin-divination/coin-divination"
+    "pages/coin-divination/coin-divination",
+    "pages/qingjing/qingjing"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -1,0 +1,26 @@
+<!--qingjing.wxml-->
+<scroll-view class="scrollarea" scroll-y>
+  <view class="container">
+    <!-- 页面标题 -->
+    <view class="header">
+      <view class="title-container">
+        <text class="main-title">清静经</text>
+        <text class="subtitle">太上老君说常清静经</text>
+      </view>
+    </view>
+
+    <!-- 经文内容 -->
+    <view class="content-container">
+      <view class="content-card" wx:for="{{content}}" wx:key="index">
+        <view class="section-content">{{item}}</view>
+      </view>
+    </view>
+
+    <!-- 底部装饰 -->
+    <view class="footer">
+      <view class="decoration-line"></view>
+      <text class="footer-text">道法自然 · 清静无为</text>
+      <view class="decoration-line"></view>
+    </view>
+  </view>
+</scroll-view>

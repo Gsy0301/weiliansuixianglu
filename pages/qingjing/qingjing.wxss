@@ -1,0 +1,160 @@
+/* qingjing.wxss */
+page {
+  height: 100vh;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.scrollarea {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.container {
+  min-height: 100%;
+  padding: 0 16px 20px;
+}
+
+/* 页面标题样式 */
+.header {
+  padding: 24px 0 32px;
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin: 0 -16px 24px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.main-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 3px;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  letter-spacing: 1.5px;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+}
+
+/* 内容容器 */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* 经文卡片样式 */
+.content-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.content-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* 经文内容 */
+.section-content {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #495057;
+  text-align: justify;
+  text-indent: 2em;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  margin: 0;
+}
+
+/* 底部装饰 */
+.footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.decoration-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #dee2e6, transparent);
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: 300;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* 响应式设计 */
+@media (max-width: 375px) {
+  .main-title {
+    font-size: 26px;
+    letter-spacing: 2px;
+  }
+  
+  .subtitle {
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  
+  .section-content {
+    font-size: 15px;
+  }
+  
+  .content-card {
+    padding: 16px;
+  }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+  page {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  }
+  
+  .content-card {
+    background: #2d2d2d;
+    border-color: rgba(102, 126, 234, 0.2);
+  }
+  
+  
+  .section-content {
+    color: #adb5bd;
+  }
+  
+  .footer-text {
+    color: #6c757d;
+  }
+}
