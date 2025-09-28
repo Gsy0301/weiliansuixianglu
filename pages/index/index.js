@@ -13,4 +13,7 @@ Page({
   goToQingjing() {
     wx.navigateTo({ url: '/pages/qingjing/qingjing' })
   },
+  goToQuiz() {
+    wx.navigateTo({ url: '/pages/quiz/quiz' })
+  },
 })

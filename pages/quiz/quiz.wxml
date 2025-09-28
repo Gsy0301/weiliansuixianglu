@@ -1,0 +1,169 @@
+<!--quiz.wxml-->
+<view class="container">
+  <!-- 步骤1: 录入参考答案 -->
+  <view wx:if="{{currentStep === 1}}" class="step-container">
+    <view class="header">
+      <text class="title">录入参考答案</text>
+      <text class="subtitle">点击选择每题的正确答案，完成后点击"完成录入"</text>
+    </view>
+    
+    <scroll-view class="questions-scroll" scroll-y scroll-with-animation scroll-into-view="{{scrollIntoView}}">
+      <view class="questions-container">
+        <view wx:for="{{questionList}}" wx:key="index" class="question-item" id="q-{{item.index}}">
+          <view class="question-number">
+            <view class="q-index">{{item.index + 1}}</view>
+          </view>
+          <view class="options">
+            <view 
+              wx:for="{{['A', 'B', 'C', 'D']}}" 
+              wx:for-item="option"
+              wx:key="option"
+              class="option {{item.answer === option ? 'selected' : ''}}"
+              data-answer="{{option}}"
+              data-index="{{item.index}}"
+              bindtap="selectCorrectAnswer"
+            >
+              {{option}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    
+    <!-- 底部固定操作区（参考答案阶段） -->
+    <view class="bottom-sticky">
+      <view class="question-overview">
+        <view class="overview-header">
+          <text class="overview-title">题目总览</text>
+          <text class="overview-toggle" bindtap="showFullOverview">展开</text>
+        </view>
+        <scroll-view class="overview-scroll" scroll-y wx:if="{{questionOverview.length > 0}}">
+          <view class="overview-grid">
+            <view 
+              wx:for="{{questionOverview}}" 
+              wx:key="index" 
+              class="overview-item {{item.status}}"
+            >
+              {{item.index + 1}}
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <view class="action-buttons fixed">
+        <button class="btn primary" bindtap="finishCorrectAnswers">完成录入</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤2: 录入用户答案 -->
+  <view wx:if="{{currentStep === 2}}" class="step-container">
+    <view class="header">
+      <text class="title">录入您的答案</text>
+      <text class="subtitle">共{{totalQuestions}}题，请选择您的答案</text>
+    </view>
+    
+    <view class="questions-container">
+      <view wx:for="{{userQuestionList}}" wx:key="index" class="question-item" id="uq-{{item.index}}">
+        <view class="question-number">
+          <view class="q-index">{{item.index + 1}}</view>
+        </view>
+        <view class="options">
+          <view 
+            wx:for="{{['A', 'B', 'C', 'D']}}" 
+            wx:for-item="option"
+            wx:key="option"
+            class="option {{userAnswers[item.index] === option ? 'selected' : ''}}"
+            data-answer="{{option}}"
+            data-index="{{item.index}}"
+            bindtap="selectCorrectAnswer"
+          >
+            {{option}}
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 底部固定操作区（用户答案阶段） -->
+    <view class="bottom-sticky">
+      <view class="question-overview">
+        <view class="overview-header">
+          <text class="overview-title">题目总览</text>
+          <text class="overview-toggle" bindtap="showFullOverview">展开</text>
+        </view>
+        <scroll-view class="overview-scroll" scroll-y wx:if="{{questionOverview.length > 0}}">
+          <view class="overview-grid">
+            <view 
+              wx:for="{{questionOverview}}" 
+              wx:key="index" 
+              class="overview-item {{item.status}}"
+            >
+              {{item.index + 1}}
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+
+      <view class="action-buttons fixed">
+        <button class="btn primary" bindtap="finishUserAnswers">查看结果</button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤3: 查看结果 -->
+  <view wx:if="{{currentStep === 3}}" class="step-container">
+    <view class="header">
+      <text class="title">核对结果</text>
+    </view>
+    
+    <view class="result-summary">
+      <view class="score-card">
+        <text class="score">{{correctCount}}/{{totalQuestions}}</text>
+        <text class="score-label">正确题数</text>
+      </view>
+      <view class="accuracy-card">
+        <text class="accuracy">{{accuracy}}%</text>
+        <text class="accuracy-label">正确率</text>
+      </view>
+    </view>
+    
+    <view wx:if="{{wrongQuestions.length > 0}}" class="wrong-questions">
+      <text class="section-title">错题详情：</text>
+      <view wx:for="{{wrongQuestions}}" wx:key="index" class="wrong-item">
+        <text class="wrong-question">第{{item.index}}题：</text>
+        <text class="wrong-answer">您的答案：{{item.userAnswer}}</text>
+        <text class="correct-answer">正确答案：{{item.correctAnswer}}</text>
+      </view>
+    </view>
+    
+    <view wx:else class="perfect-result">
+      <text class="perfect-text">🎉 全部正确！太棒了！</text>
+    </view>
+    
+    <view class="action-buttons">
+      <button class="btn secondary" bindtap="restart">重新开始</button>
+      <button class="btn primary" bindtap="goBack">返回首页</button>
+    </view>
+  </view>
+
+  <!-- 全屏题目总览弹窗 -->
+  <view wx:if="{{showAllOverview}}" class="full-overview-modal" bindtap="closeFullOverview">
+    <view class="full-overview-content" catchtap="">
+      <view class="full-overview-header">
+        <text class="full-overview-title">题目总览</text>
+        <text class="close-btn" bindtap="closeFullOverview">✕</text>
+      </view>
+      <scroll-view class="full-overview-scroll" scroll-y>
+        <view class="full-overview-grid">
+          <view 
+            wx:for="{{questionOverview}}" 
+            wx:key="index" 
+            class="full-overview-item {{item.status}}"
+          >
+            {{item.index + 1}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

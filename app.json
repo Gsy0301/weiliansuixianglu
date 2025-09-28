@@ -4,7 +4,8 @@
     "pages/food-dice/food-dice",
     "pages/timetable/timetable",
     "pages/coin-divination/coin-divination",
-    "pages/qingjing/qingjing"
+    "pages/qingjing/qingjing",
+    "pages/quiz/quiz"
   ],
   "window": {
     "navigationBarTextStyle": "black",

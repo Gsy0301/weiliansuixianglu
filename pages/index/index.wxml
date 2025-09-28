@@ -18,6 +18,10 @@
         <view class="feature-icon">📜</view>
         <text class="feature-text">清静经</text>
       </view>
+      <view class="feature-item card" bindtap="goToQuiz">
+        <view class="feature-icon">📝</view>
+        <text class="feature-text">核对选择题</text>
+      </view>
     </view>
 
     <view class="footer">
