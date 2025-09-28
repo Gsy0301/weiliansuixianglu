@@ -243,7 +243,7 @@
 
 .overview-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 12rpx;
 }
 
@@ -274,7 +274,8 @@
 }
 
 .overview-scroll {
-  max-height: calc(70rpx * 4 + 12rpx * 3); /* 默认4行 */
+  height: calc(70rpx * 4 + 12rpx * 3); /* 固定4行高度 */
+  min-height: calc(70rpx * 4 + 12rpx * 3); /* 最小高度也是4行 */
 }
 
 /* 全屏题目总览弹窗样式 */
@@ -328,7 +329,7 @@
 
 .full-overview-grid {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 8rpx;
 }
 

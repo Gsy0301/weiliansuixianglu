@@ -19,6 +19,12 @@ Page({
   },
 
   onLoad() {
+    // 初始化5道题
+    const initialQuestions = []
+    for (let i = 0; i < 5; i++) {
+      initialQuestions.push({ index: i, answer: '' })
+    }
+    
     this.setData({
       currentStep: 1,
       correctAnswers: {},
@@ -28,7 +34,7 @@ Page({
       wrongQuestions: [],
       isAnswering: true,
       currentQuestionIndex: 0,
-      questionList: [{ index: 0, answer: '' }],
+      questionList: initialQuestions,
       userQuestionList: [],
       accuracy: 0,
       scrollIntoView: 'q-0',
@@ -225,6 +231,12 @@ Page({
 
   // 重新开始
   restart() {
+    // 初始化5道题
+    const initialQuestions = []
+    for (let i = 0; i < 5; i++) {
+      initialQuestions.push({ index: i, answer: '' })
+    }
+    
     this.setData({
       currentStep: 1,
       correctAnswers: {},
@@ -234,7 +246,7 @@ Page({
       wrongQuestions: [],
       isAnswering: true,
       currentQuestionIndex: 0,
-      questionList: [{ index: 0, answer: '' }],
+      questionList: initialQuestions,
       userQuestionList: [],
       accuracy: 0,
       scrollIntoView: 'q-0',
